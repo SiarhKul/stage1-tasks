@@ -41,10 +41,6 @@ window.document.onmouseup = function (e) {
   console.log('NO Pressed');
 }
 
-
-
-
-
 //------------------------------------------------keyboard
 window.addEventListener("keydown", (e) => {
   const key = document.querySelector(`.piano-key[data-letter="${e.key.toUpperCase()}"]`);
@@ -70,3 +66,24 @@ btnNotes.addEventListener('click', () => {
   btnNotes.classList.add('btn-active')
   pianoKey.forEach(k => k.classList.remove('letter'))
 })
+//------------------------------------------------fullscreen
+
+document.querySelector('.fullscreen').addEventListener('click', () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+      turnOffFullscreen()
+    }
+  }
+})
+
+const turnOffFullscreen = () => {
+  document.addEventListener("keypress", function (e) {
+    if (e.key === 'Escape') {
+      toggleFullScreen();
+    }
+  }, false);
+}
+
