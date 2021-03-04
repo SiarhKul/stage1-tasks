@@ -41,6 +41,10 @@ window.document.onmouseup = function (e) {
   console.log('NO Pressed');
 }
 
+
+
+
+
 //------------------------------------------------keyboard
 window.addEventListener("keydown", (e) => {
   const key = document.querySelector(`.piano-key[data-letter="${e.key.toUpperCase()}"]`);
@@ -53,3 +57,16 @@ window.addEventListener("keydown", (e) => {
   audio.play();
 });
 
+//------------------------------------------------button change letters
+
+btnLetters.addEventListener('click', () => {
+  btnNotes.classList.remove('btn-active')
+  btnLetters.classList.add('btn-active')
+  pianoKey.forEach(k => k.classList.add('letter'))
+})
+
+btnNotes.addEventListener('click', () => {
+  btnLetters.classList.remove('btn-active')
+  btnNotes.classList.add('btn-active')
+  pianoKey.forEach(k => k.classList.remove('letter'))
+})
