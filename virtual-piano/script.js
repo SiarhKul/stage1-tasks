@@ -40,3 +40,16 @@ window.document.onmouseup = function (e) {
   isPressed = false
   console.log('NO Pressed');
 }
+
+//------------------------------------------------keyboard
+window.addEventListener("keydown", (e) => {
+  const key = document.querySelector(`.piano-key[data-letter="${e.key.toUpperCase()}"]`);
+  if (key === null) return;
+  const audio = document.querySelector(`audio[data-note="${key.dataset.note}"]`);
+  // const keyNote = key.getAttribute("data-note");
+  // key.classList.add("playing");
+  // note.innerHTML = keyNote;
+  audio.currentTime = 0;
+  audio.play();
+});
+
